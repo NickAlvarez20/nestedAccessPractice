@@ -13,7 +13,7 @@ const sumGrades = (student) => {
 
 // Refactor
 const sumGradesNotExpensive = (student) => {
-  const entries = Object.entries(student);
+  const entries = Object.entries(student); // store Object.entries(student)
   let sum = 0;
   for (const [key, value] of entries) {
     sum += value;
@@ -26,4 +26,4 @@ const sumGradesNotExpensive = (student) => {
 
 console.log(sumGrades(Astudent));
 
-console.log(sumGradesNotExpensive(Astudent));
+console.log(sumGradesNotExpensive(Astudent)); // cleaner version
