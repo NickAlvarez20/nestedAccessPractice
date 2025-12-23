@@ -27,3 +27,17 @@ const sumGradesNotExpensive = (student) => {
 console.log(sumGrades(Astudent));
 
 console.log(sumGradesNotExpensive(Astudent)); // cleaner version
+
+// Using for...in loop (Older version for ancient code bases: Good to Know)
+
+const sumGradesAlt = (student) => {
+  let sum = 0;
+  let count = 0;
+  for (const key in student) {
+    sum += student[key];
+    count++;
+  }
+  return { "Average Grade(Alt Method)": sum / count };
+};
+
+console.log(sumGradesAlt(Astudent));
