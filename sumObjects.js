@@ -136,9 +136,18 @@ const bobResult = bruteForceGradeAverage(department, "bob");
 console.log("Alice's Grade Average: " + aliceResult["Student Grade Average"]);
 console.log("Bob's Grade Average: " + bobResult["Student Grade Average"]);
 
-// // Nested objects
-// const department = {
-//   math: { alice: 85, bob: 90 },
-//   science: { alice: 92, bob: 88 },
-//   history: { alice: 88, bob: 95 },
-// };
+// Brute Force Store - Total Stock Values
+
+const bruteForceTotalStockValue = (store) => {
+  let sum = 0;
+  const storeCategories = Object.values(store);
+  for (let i = 0; i < storeCategories.length; i++) {
+    const quantities = Object.values(storeCategories[i]); // extracts an array of numbers from all categories using Object.values
+    for (let j = 0; j < quantities.length; j++) {
+      sum += quantities[j];
+    }
+  }
+  return sum;
+};
+
+console.log(bruteForceTotalStockValue(store));
