@@ -109,3 +109,36 @@ console.log(getStudentAverage(department, "alice"));
 const result = totalStockInStore(store);
 console.log("Total stock values: " + result["Stock total"]);
 console.log("Total stock values: " + result["Stock total"]);
+
+// Refactor using brute force approach
+const bruteForceGradeAverage = (department, studentname) => {
+  let sum = 0;
+  let count = 0;
+
+  // Step 1: Get array of category names (["math", "science", "etc"])
+  const categories = Object.keys(department);
+  // Step 2: Loop with classic for i
+  for (let i = 0; i < categories.length; i++) {
+    if (studentname in department[categories[i]]) {
+      sum += department[categories[i]][studentname];
+      count++;
+    }
+  }
+  if (count === 0) {
+    return { "Student Grade Average": sum / count };
+  }
+  return { "Student Grade Average": Math.round(sum / count) };
+};
+
+const aliceResult = bruteForceGradeAverage(department, "alice");
+const bobResult = bruteForceGradeAverage(department, "bob");
+
+console.log("Alice's Grade Average: " + aliceResult["Student Grade Average"]);
+console.log("Bob's Grade Average: " + bobResult["Student Grade Average"]);
+
+// // Nested objects
+// const department = {
+//   math: { alice: 85, bob: 90 },
+//   science: { alice: 92, bob: 88 },
+//   history: { alice: 88, bob: 95 },
+// };
