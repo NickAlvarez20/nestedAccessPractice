@@ -94,3 +94,24 @@ const quadSumNestedReduce = (numArr) =>
 
 console.log(quadSumNested(quadrupleNestedArr));
 console.log(quadSumNestedReduce(quadrupleNestedArr));
+
+// Recursive version
+const deepSumRecursive = (arr) =>
+  Array.isArray(arr)
+    ? arr.reduce((acc, val) => acc + deepSumRecursive(val), 0)
+    : arr;
+
+console.log(
+  "Quadruple Nested Recursive Sum: " + deepSumRecursive(quadrupleNestedArr),
+
+  "Triple Nested Recursive Sum: " + deepSumRecursive(tripleNestedArr),
+  "Double Nested Recursive Sum: " + deepSumRecursive(nestedNumbers)
+);
+
+// Overflow test
+let deep = 0;
+for (let i = 0; i < 8888888; i++) {
+  deep = [deep];
+}
+
+console.log(deepSumRecursive(deep));
