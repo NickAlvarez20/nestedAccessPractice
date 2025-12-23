@@ -41,3 +41,71 @@ const sumGradesAlt = (student) => {
 };
 
 console.log(sumGradesAlt(Astudent));
+
+// Nested objects
+const department = {
+  math: { alice: 85, bob: 90 },
+  science: { alice: 92, bob: 88 },
+  history: { alice: 88, bob: 95 },
+};
+
+const store = {
+  fruits: {
+    apples: 150, // quantity in stock
+    bananas: 200,
+    oranges: 120,
+    grapes: 90,
+  },
+  vegetables: {
+    carrots: 100,
+    broccoli: 70,
+    lettuce: 45,
+    tomatoes: 80,
+  },
+  dairy: {
+    milk: 40,
+    cheese: 25,
+    yogurt: 60,
+    butter: 30,
+  },
+};
+
+const getStudentAverage = (department, studentName) => {
+  const subjects = Object.entries(department);
+  let sum = 0;
+  let count = 0;
+  for (const [subject, grades] of subjects) {
+    if (studentName in grades) {
+      sum += grades[studentName];
+      count++;
+    }
+  }
+  if (count === 0) return 0;
+  return Math.round(sum / count, 2);
+};
+
+const totalStockInStore = (store) => {
+  let total = 0;
+  for (const [category, items] of Object.entries(store)) {
+    for (const [item, quantity] of Object.entries(items)) {
+      total += quantity;
+    }
+  }
+  return { "Stock total": total };
+};
+
+// Refactor using Object.values()
+const totalStockValues = (store) => {
+  let total = 0;
+  for (const items of Object.values(store)) {
+    for (const value of Object.values(items)) {
+      total += value;
+    }
+  }
+  return { "Stock total": total };
+};
+
+console.log(getStudentAverage(department, "alice"));
+const result = totalStockInStore(store);
+console.log("Total stock values: " + result["Stock total"]);
+console.log("Total stock values: " + result["Stock total"]);
