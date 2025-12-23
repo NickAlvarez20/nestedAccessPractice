@@ -21,8 +21,8 @@ const sumNestedArrReduceMethod = (numArr) =>
     0
   );
 
-console.log(sumNestedArr(nestedNumbers));
-console.log(sumNestedArrReduceMethod(nestedNumbers));
+console.log("Double Nested Sum: " + sumNestedArr(nestedNumbers));
+console.log("Double Nested Sum: " + sumNestedArrReduceMethod(nestedNumbers));
 
 // Extend to triple nested challenge
 const tripleNestedSum = (numArr) => {
@@ -51,8 +51,8 @@ const tripleNestedSumReduce = (numArr) =>
   );
 
 const tripleNestedArr = [[[1, 2]], [[3, 4]]];
-console.log(tripleNestedSum(tripleNestedArr));
-console.log(tripleNestedSumReduce(tripleNestedArr));
+console.log("Triple Nested Sum: " + tripleNestedSum(tripleNestedArr));
+console.log("Triple Nested Sum: " + tripleNestedSumReduce(tripleNestedArr));
 
 // Quadruple nested just for funs
 const quadrupleNestedArr = [
@@ -92,8 +92,8 @@ const quadSumNestedReduce = (numArr) =>
     0
   );
 
-console.log(quadSumNested(quadrupleNestedArr));
-console.log(quadSumNestedReduce(quadrupleNestedArr));
+console.log("Quadruple Nested Sum: " + quadSumNested(quadrupleNestedArr));
+console.log("Quadruple Nested Sum: " + quadSumNestedReduce(quadrupleNestedArr));
 
 // Recursive version
 const deepSumRecursive = (arr) =>
@@ -109,9 +109,52 @@ console.log(
 );
 
 // Overflow test
-let deep = 0;
-for (let i = 0; i < 8888888; i++) {
-  deep = [deep];
-}
+// let deep = 0;
+// for (let i = 0; i < 8888888; i++) {
+//   deep = [deep];
+// }
 
-console.log(deepSumRecursive(deep));
+// console.log(deepSumRecursive(deep));
+
+// Brute force method
+const bruteForceDouble = (numArr) => {
+  let sum = 0;
+  for (let i = 0; i < numArr.length; i++) {
+    for (let j = 0; j < numArr[i].length; j++) {
+      sum += numArr[i][j];
+    }
+  }
+  return sum;
+};
+
+// Triple
+const bruteForceTriple = (numArr) => {
+  let sum = 0;
+  for (let i = 0; i < numArr.length; i++) {
+    for (let j = 0; j < numArr[i].length; j++) {
+      for (let k = 0; k < numArr[i][j].length; k++) {
+        sum += numArr[i][j][k];
+      }
+    }
+  }
+  return sum;
+};
+
+// Quadruple Nested
+const bruteForceQuadruple = (numArr) => {
+  let sum = 0;
+  for (let i = 0; i < numArr.length; i++) {
+    for (let j = 0; j < numArr[i].length; j++) {
+      for (let k = 0; k < numArr[i][j].length; k++) {
+        for (let l = 0; l < numArr[i][j][k].length; l++) {
+          sum += numArr[i][j][k][l];
+        }
+      }
+    }
+  }
+  return sum;
+};
+
+console.log("Double Nested Sum: " + bruteForceDouble(nestedNumbers));
+console.log("Triple Nested Sum: " + bruteForceTriple(tripleNestedArr));
+console.log("Quadruple Nested Sum: " + bruteForceQuadruple(quadrupleNestedArr));
