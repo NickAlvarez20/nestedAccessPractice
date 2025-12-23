@@ -14,4 +14,12 @@ function sumNestedArr(numArr) {
   return sum;
 }
 
+const sumNestedArrReduceMethod = (numArr) =>
+  numArr.reduce(
+    (acc, currVal) =>
+      acc + currVal.reduce((innerAcc, val) => innerAcc + val, 0),
+    0
+  );
+
 console.log(sumNestedArr(nestedNumbers));
+console.log(sumNestedArrReduceMethod(nestedNumbers));
